@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <time.h>
+
+//This is the function given in Week4 tutorial page
+
 long f1(long n){
     long k = 0;
     for (long i = 0; i < n; i++){
@@ -65,16 +68,61 @@ void f7(long n){
     }
 }
 
-int main() {
+int main(){
 
     long n;
+    int choice;
 
-    printf("Enter a value for n:\n");
+    printf("Enter value for n: ");
     scanf("%ld", &n);
+
+    printf("\nChoose function to test:\n");
+    printf("1 = f1\n");
+    printf("2 = f2\n");
+    printf("3 = f3\n");
+    printf("4 = f4\n");
+    printf("5 = f5\n");
+    printf("6 = f6\n");
+    printf("7 = f7\n");
+    printf("Enter choice: ");
+    scanf("%d", &choice);
 
     clock_t start = clock();
 
-    f1(n);   // change this to test other functions
+    switch(choice){
+
+        case 1:
+            f1(n);
+            break;
+
+        case 2:
+            f2(n);
+            break;
+
+        case 3:
+            f3(n);
+            break;
+
+        case 4:
+            f4(n);
+            break;
+
+        case 5:
+            f5(n);
+            break;
+
+        case 6:
+            f6(n);
+            break;
+
+        case 7:
+            f7(n);
+            break;
+
+        default:
+            printf("Invalid choice\n");
+            return 0;
+    }
 
     clock_t diff = clock() - start;
 

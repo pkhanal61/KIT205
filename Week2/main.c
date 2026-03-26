@@ -6,7 +6,7 @@ int main() {
     // Unit test
     list_test();  
 
-    // Create lists for merge/reverse tests
+    // It create lists for merge/reverse tests
     List l1 = new_list();
     List l2 = new_list();
 
@@ -33,14 +33,10 @@ int main() {
 
     // Merge l1 and l2
     List merged = merge(&l1, &l2);
-    printf("\nMerged l1 and l2: ");
+    printf("\nMerged List: ");
     print_list(&merged);
 
-    // Optional: destroy lists if you want to free memory
-    // destroy_list(&l1);
-    // destroy_list(&l2);
-    // destroy_list(&rev_l1);
-    // destroy_list(&merged);
+ 
 
     return 0;
 }
