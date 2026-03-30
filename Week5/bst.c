@@ -119,3 +119,130 @@ void destroy_bst(BST *self) {
 	destroy_bst_node(self->root);
 	self->root = NULL;
 }
+
+void bst_adhoc_test() {
+	BST tree = new_bst();
+	int quit = 0;
+	int data;
+	while (quit == 0) {
+		printf("Enter some data: ");
+		if (scanf("%d", &data) != 1) {
+			printf("Invalid input!\n");
+			break;
+		}
+		if (data != 0) {
+			insert_bst(&tree, data);
+		}
+		else {
+			quit = 1;
+		}
+	}
+	print_in_order_bst(&tree);
+	printf("\n");
+}
+
+
+// Pre order: root -> left -> right
+void print_pre_order_bst_node(BSTNodePtr self) {
+	if (self == NULL) {
+		printf("_");
+	}
+	else {
+		printf("(");
+		printf(" %d ", self->data_item);
+		print_pre_order_bst_node(self->left);
+		print_pre_order_bst_node(self->right);
+		printf(")");
+	}
+}
+
+void print_pre_order_bst(BST* self) {
+	print_pre_order_bst_node(self->root);
+}
+
+// Post order: left -> right -> root
+void print_post_order_bst_node(BSTNodePtr self) {
+	if (self == NULL) {
+		printf("_");
+	}
+	else {
+		printf("(");
+		print_post_order_bst_node(self->left);
+		print_post_order_bst_node(self->right);
+		printf(" %d ", self->data_item);
+		printf(")");
+	}
+}
+
+void print_post_order_bst(BST* self) {
+	print_post_order_bst_node(self->root);
+}
+
+
+
+
+// Recursive function helper
+int height_bst_node(BSTNodePtr self) {
+	if (self == NULL) {
+		return 0;
+	}
+	int left_height = height_bst_node(self->left);
+	int right_height = height_bst_node(self->right);
+
+	if (left_height > right_height)
+		return left_height + 1;
+	else
+		return right_height + 1;
+}
+
+// Public function
+int height_bst(BST* self) {
+	return height_bst_node(self->root);
+}
+
+
+void bst_test() {
+	BST tree = new_bst();
+
+	printf("=== BST Unit Tests ===\n\n");
+
+	// Testing by inserting
+	printf("Testing insert...\n");
+	insert_bst(&tree, 5);
+	insert_bst(&tree, 3);
+	insert_bst(&tree, 7);
+	insert_bst(&tree, 1);
+	insert_bst(&tree, 4);
+
+	printf("In order (expected: 1 3 4 5 7): ");
+	print_in_order_bst(&tree);
+	printf("\n");
+
+	printf("Pre order: ");
+	print_pre_order_bst(&tree);
+	printf("\n");
+
+	printf("Post order: ");
+	print_post_order_bst(&tree);
+	printf("\n");
+
+	// Height testing
+	printf("\nTesting height (expected 3): %d\n", height_bst(&tree));
+
+	// Find testing
+	printf("\nTesting find...\n");
+	printf("Find 3 (expected found): %s\n", find_bst(&tree, 3) != NULL ? "Found" : "Not Found");
+	printf("Find 9 (expected not found): %s\n", find_bst(&tree, 9) != NULL ? "Found" : "Not Found");
+
+	// Delete Testing
+	printf("\nTesting delete...\n");
+	delete_bst(&tree, 3);
+	printf("After deleting 3: ");
+	print_in_order_bst(&tree);
+	printf("\n");
+
+	// Destroy Testing
+	destroy_bst(&tree);
+	printf("\nTree destroyed successfully\n");
+	printf("Root is NULL: %s\n", tree.root == NULL ? "Yes" : "No");
+}
