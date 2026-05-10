@@ -8,7 +8,7 @@ Started by setting up the header file. Reused the same structs from week 8 (Edge
 Commit 2: Added graph.c - load_graph, add_edge and calculate_pagerank
 Copied add_edge from week 8, it was the same. For load_graph I had a problem - the week 9 input file uses from,to format (no weight) but my week 8 code only read from,to,weight so it wasnt reading any edges. Fixed it by using fgets and sscanf so it tries weighted format first then falls back to unweighted.
 
-Implemented the PageRank function following the pseudocode from the tutorial. Created three arrays - PR[], sums[], and out_degree[]. Initialised all PageRanks to 1. The three loops inside the iteration are kept separate as required.
+Implemented the PageRank function following the pseudocode from the tutorial. Created three arrays - PR[], sums[], and out_degree[]. Initialised all the PageRanks to 1. The three loops inside the iteration are kept separate as required.
 
 Added a check for out_degree > 0 before dividing to avoid division by zero. Vertices 14 and 18 have no outgoing edges so without this it would crash.
 
