@@ -6,8 +6,9 @@ int main(void) {
     if (G.edges == NULL) {
         return 1;
     }
-
+    //Testing the correctness of graph
     print_indegrees(&G);
+    //free memory
     free_graph(&G);
     return 0;
 }
