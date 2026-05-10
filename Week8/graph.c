@@ -15,6 +15,7 @@ void add_edge(Graph *G, int from, int to, int w) {
 //loading graph from file
 Graph load_graph(const char *filename) {
     Graph G;
+    G.edges = NULL; 
 
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
