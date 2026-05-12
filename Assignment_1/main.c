@@ -23,7 +23,7 @@ int main() {
 
         printf("\nSongs by Drake:\n");
 
-        inorder_songs(drake->songs); // it prints songs in sorted order
+        inorder_songs(drake->songs); // it prints all the songs in sorted order
     }
 
     return 0;
