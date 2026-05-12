@@ -15,6 +15,6 @@ typedef struct Artist {
 Artist* create_artist(char name[]);
 void insert_artist(Artist** head, char name[]);
 Artist* find_artist(Artist* head, char name[]);
-void print_artists(Artist* head);
+void print_artist_list(Artist* head);
 
 #endif
