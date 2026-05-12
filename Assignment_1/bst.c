@@ -8,7 +8,7 @@ SongNode* create_song_node(char title[]) {
 
     SongNode* newNode = (SongNode*)malloc(sizeof(SongNode)); //allocating memory
 
-    strcpy(newNode->title, title); //it stores song title
+    strcpy(newNode->title, title); //it stores the song title
 
     newNode->left = NULL;
     newNode->right = NULL;
