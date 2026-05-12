@@ -50,16 +50,14 @@ Artist* find_artist(Artist* head, char name[]) {
     return NULL;
 }
 
-void print_artists(Artist* head) {
+void print_artist_list(Artist* head) {
 
     Artist* current = head;
 
-    printf("\nArtists List:\n");
+    printf("\nArtists List:\n"); 
 
     while (current != NULL) {
-
-        printf("%s\n", current->name); //it prints each artist
-
+        printf("%s\n", current->name); //prints each artist
         current = current->next;
     }
 }
