@@ -17,9 +17,9 @@ int main() {
 
     if (drake != NULL) {
 
-        drake->songs = insert_song(drake->songs, "GodsPlan");
-        drake->songs = insert_song(drake->songs, "OneDance");
-        drake->songs = insert_song(drake->songs, "HotlineBling");
+        drake->songs = insert_song(drake->songs, "GodsPlan", "Drake");
+        drake->songs = insert_song(drake->songs, "OneDance", "Drake");
+        drake->songs = insert_song(drake->songs, "HotlineBling", "Drake");
 
         printf("\nSongs by Drake:\n");
 
