@@ -1,30 +1,31 @@
 #include <stdio.h>
 
-#include "linkedlist.h"
-#include "bst.h"
+#include "proto1.h"
 
 int main() {
 
-    Artist* artistList = NULL; // it creats empty artist list
-    //adding artists
-    insert_artist(&artistList, "Drake");
-    insert_artist(&artistList, "TaylorSwift");
-    insert_artist(&artistList, "EdSheeran");
+    Proto1DB db;
 
-    print_artists(artistList); // displaying all artists
+    init_db(&db);
 
-    Artist* drake = find_artist(artistList, "Drake");
+    // Add artists
+    add_artist(&db, "Drake");
+    add_artist(&db, "TaylorSwift");
+    add_artist(&db, "EdSheeran");
 
-    if (drake != NULL) {
+    // Add songs
+    add_song_to_artist(&db, "Drake", "GodsPlan");
+    add_song_to_artist(&db, "Drake", "OneDance");
+    add_song_to_artist(&db, "Drake", "HotlineBling");
 
-        drake->songs = insert_song(drake->songs, "GodsPlan", "Drake");
-        drake->songs = insert_song(drake->songs, "OneDance", "Drake");
-        drake->songs = insert_song(drake->songs, "HotlineBling", "Drake");
+    add_song_to_artist(&db, "TaylorSwift", "LoveStory");
+    add_song_to_artist(&db, "TaylorSwift", "BlankSpace");
 
-        printf("\nSongs by Drake:\n");
+    // Print results
+    print_artists_db(&db);
 
-        inorder_songs(drake->songs); // it prints all the songs in sorted order
-    }
+    print_songs_of_artist(&db, "Drake");
+    print_songs_of_artist(&db, "TaylorSwift");
 
     return 0;
 }
