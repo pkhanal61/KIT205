@@ -32,3 +32,11 @@ LoveStory - TaylorSwift
 Developed Prototype 2 of the music database system using a hash table for storing artists and an AVL tree for storing songs. This structure was chosen to improve search efficiency for artists and maintain balanced performance for song storage.
 
 Both Prototype 1 and Prototype 2 produce the same output results, but use different data structures internally. Prototype 2 improves performance by using a hash table for faster artist lookup and an AVL tree for balanced and efficient song insertion and retrieval.
+
+
+Implemented performance evaluation to compare Prototype 1 and Prototype 2 using generated music records. Testing measured insertion and retrieval operations for artists and songs. Results showed that Prototype 2 performed significantly faster than Prototype 1 due to the use of hash tables and AVL trees for efficient data access and balanced storage.
+
+Performance Results:
+
+Prototype 1 Time: 0.083929 seconds
+Prototype 2 Time: 0.000617 seconds
