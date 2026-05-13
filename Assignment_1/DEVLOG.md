@@ -13,3 +13,22 @@ Integrated linked list and binary search tree by associating each artist node wi
 Developed a main test program to verify functionality of both data structures. Debugged function parameter mismatches and corrected header definitions to ensure proper compilation and execution.
 
 Completed Prototype 1 of the music database system. The system successfully supports insertion and retrieval of artists and songs, with songs stored in sorted order using BST and artists managed via linked list.
+
+Ouput looks like :
+Artists List:
+Drake
+TaylorSwift
+EdSheeran
+
+Songs by Drake:
+GodsPlan - Drake
+HotlineBling - Drake
+OneDance - Drake
+
+Songs by TaylorSwift:
+BlankSpace - TaylorSwift
+LoveStory - TaylorSwift
+
+Developed Prototype 2 of the music database system using a hash table for storing artists and an AVL tree for storing songs. This structure was chosen to improve search efficiency for artists and maintain balanced performance for song storage.
+
+Both Prototype 1 and Prototype 2 produce the same output results, but use different data structures internally. Prototype 2 improves performance by using a hash table for faster artist lookup and an AVL tree for balanced and efficient song insertion and retrieval.
