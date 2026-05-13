@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include "evaluation.h"
 #include "proto1.h"
 
 int main() {
@@ -26,6 +26,8 @@ int main() {
 
     print_songs_of_artist(&db, "Drake");
     print_songs_of_artist(&db, "TaylorSwift");
+
+    run_evaluation(); //run performance evaluation
 
     return 0;
 }
