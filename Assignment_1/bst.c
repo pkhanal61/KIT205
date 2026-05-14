@@ -35,3 +35,95 @@ SongNode* insert_song(SongNode* root, char title[]) {
 
     return root;
 }
+
+// add an artist to a song node
+// uses a linked list so one song can have multiple artists
+void add_artist_to_bst_song(SongNode* song, char artistName[]) {
+
+    if (song == NULL) return;
+
+    // check if artist is already in the list
+    ArtistListBST* temp = song->artists;
+    while (temp != NULL) {
+        if (strcmp(temp->name, artistName) == 0) {
+            return; // already exists, don't add again
+        }
+        temp = temp->next;
+    }
+
+    // create new artist and add to front of list
+    ArtistListBST* newArtist = (ArtistListBST*)malloc(sizeof(ArtistListBST));
+    strcpy(newArtist->name, artistName);
+    newArtist->next = song->artists;
+    song->artists = newArtist;
+}
+
+
+SongNode* find_song(SongNode* root, char title[]) {
+
+    if (root == NULL) return NULL; // not found
+
+    int cmp = strcmp(title, root->title);
+
+    if (cmp == 0) return root; // found it
+
+    if (cmp < 0)
+        return find_song(root->left, title); // go left
+
+    return find_song(root->right, title); // go right
+}
+
+
+void inorder_songs(SongNode* root) {
+
+    if (root == NULL) return;
+
+    inorder_songs(root->left);
+
+    printf("%s - ", root->title);
+
+    // print all artists for this song
+    ArtistListBST* a = root->artists;
+    if (a == NULL) {
+        printf("No artists");
+    } else {
+        while (a != NULL) {
+            printf("%s", a->name);
+            if (a->next != NULL) printf(", ");
+            a = a->next;
+        }
+    }
+
+    printf("\n");
+
+    inorder_songs(root->right);
+}
+
+// print songs for one artist but look up each song in the global tree
+// this way we get ALL artists on shared songs not just one
+void print_bst_with_global(SongNode* artistTree, SongNode* globalTree) {
+
+    if (artistTree == NULL) return;
+
+    print_bst_with_global(artistTree->left, globalTree);
+
+    // find this song in the global tree to get all artists
+    SongNode* globalSong = find_song(globalTree, artistTree->title);
+
+    printf("%s - ", artistTree->title);
+
+    if (globalSong == NULL || globalSong->artists == NULL) {
+        printf("No artists");
+    } else {
+        ArtistListBST* a = globalSong->artists;
+        while (a != NULL) {
+            printf("%s", a->name);
+            if (a->next != NULL) printf(", ");
+            a = a->next;
+        }
+    }
+
+    printf("\n");
+
+    print_bst_with_global(artistTree->right, globalTree);
+}

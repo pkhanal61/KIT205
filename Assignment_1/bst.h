@@ -10,7 +10,7 @@ typedef struct ArtistListBST {
 //BST node
 typedef struct SongNode {
     char title[100];
-    ArtistListBST* artists;
+    ArtistListBST* artists; // linked list of artist names
 
     struct SongNode* left;
     struct SongNode* right;
@@ -20,5 +20,11 @@ typedef struct SongNode {
 //Functions
 SongNode* create_song_node(char title[]);
 SongNode* insert_song(SongNode* root, char title[]);
+
+
+void add_artist_to_bst_song(SongNode* song, char artistName[]);
+SongNode* find_song(SongNode* root, char title[]);
+void inorder_songs(SongNode* root);
+void print_bst_with_global(SongNode* artistTree, SongNode* globalTree);
 
 #endif
