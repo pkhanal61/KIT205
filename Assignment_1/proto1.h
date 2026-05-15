@@ -1,11 +1,12 @@
 #ifndef PROTO1_H
 #define PROTO1_H
-
-#include "linkedlist.h"
 #include "bst.h"
+#include "linkedlist.h"
+
 
 typedef struct Proto1DB {
     Artist* artists;
+    SongNode* all_songs;
 } Proto1DB;
 
 void init_db(Proto1DB* db);
