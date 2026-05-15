@@ -88,7 +88,7 @@ AVLNode* insert_avl(AVLNode* node, char title[]) {
 // check if tree is unbalanced
     int balance = get_balance(node);
 
-//Left left - left heavy and new node went left
+//Left left - 
     if (balance > 1 && strcmp(title, node->left->title) < 0)
         return right_rotate(node);
 
