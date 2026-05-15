@@ -18,20 +18,20 @@ void add_song_to_artist(Proto1DB* db, char artistName[], char songTitle[]) {
     Artist* artist = find_artist(db->artists, artistName);
     if (artist == NULL) return;
 
-    // STEP 1: look for the song in the ONE shared global BST
+// look for the song in the One shared global BST
     SongNode* song = find_song(db->all_songs, songTitle);
 
-    // STEP 2: if not found, insert it into the global BST
+// if not found, insert it into the global BST
     if (song == NULL) {
         db->all_songs = insert_song(db->all_songs, songTitle);
         song = find_song(db->all_songs, songTitle);
     }
 
-    // STEP 3: add this artist to that shared song node
+// add this artist to that shared song node
     add_artist_to_bst_song(song, artistName);
 
-    // STEP 4: also insert into the artist's own BST
-    //         (so we can print "songs by X")
+// also insert into the artist's own BST
+
     artist->songs = insert_song(artist->songs, songTitle);
 }
 
@@ -46,6 +46,6 @@ void print_songs_of_artist(Proto1DB* db, char artistName[]) {
 
     printf("\nSongs by %s:\n", artistName);
 
-    // walk this artist's songs, look each one up in the global BST
+// walk this artist's songs, look each one up in the global BST
     print_bst_with_global(artist->songs, db->all_songs);
 }
