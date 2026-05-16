@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "proto1.h"
+#include "evaluation.h"
 
 int main() {
 
@@ -44,6 +45,8 @@ int main() {
 
     printf("\n\nSONGS (Liam Payne)\n");
     print_songs_of_artist(&db, "Liam Payne");
+
+    run_evaluation();
 
     return 0;
 }
