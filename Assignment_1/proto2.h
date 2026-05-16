@@ -8,14 +8,13 @@
 
 typedef struct Proto2DB {
     ArtistHash* table[TABLE_SIZE];
+    AVLNode* all_songs; //one shared global songs tree
 } Proto2DB;
 
 // operations
 void init_proto2(Proto2DB* db);
-
 void add_artist_p2(Proto2DB* db, char name[]);
 void add_song_p2(Proto2DB* db, char artistName[], char songTitle[]);
-
 void print_artists_p2(Proto2DB* db);
 void print_songs_p2(Proto2DB* db, char artistName[]);
 
