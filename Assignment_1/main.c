@@ -3,8 +3,10 @@
 #include "proto1.h"
 #include "proto2.h"
 #include "evaluation.h"
+#include "tests.h"
 
 int main() {
+    run_tests();  // always runs first
 
 //PROTOTYPE 1
     
