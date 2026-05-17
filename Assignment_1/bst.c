@@ -107,18 +107,19 @@ void print_bst_with_global(SongNode* artistTree, SongNode* globalTree) {
 
     print_bst_with_global(artistTree->left, globalTree);
 
-    // find this song in the global tree to get all artists
     SongNode* globalSong = find_song(globalTree, artistTree->title);
 
-    printf("%s - ", artistTree->title);
+    printf("    %s", artistTree->title);
 
-    if (globalSong == NULL || globalSong->artists == NULL) {
-        printf("No artists");
-    } else {
+    // only print artists if more than one (shared song)
+    if (globalSong != NULL && globalSong->artists != NULL && globalSong->artists->next != NULL) {
+        printf(" - All three : ");
         ArtistListBST* a = globalSong->artists;
+        int first = 1;
         while (a != NULL) {
+            if (!first) printf(", ");
             printf("%s", a->name);
-            if (a->next != NULL) printf(", ");
+            first = 0;
             a = a->next;
         }
     }

@@ -180,18 +180,19 @@ void print_songs_with_artists(AVLNode* artistTree, AVLNode* globalTree) {
 
     print_songs_with_artists(artistTree->left, globalTree);
 
-// look up this song in the global tree to get all artists not just one
     AVLNode* globalSong = find_avl(globalTree, artistTree->title);
 
-    printf("%s - ", artistTree->title);
+    printf("    %s", artistTree->title);
 
-    if (globalSong == NULL || globalSong->artists == NULL) {
-        printf("No artists");
-    } else {
+    // only print artists if more than one (shared song)
+    if (globalSong != NULL && globalSong->artists != NULL && globalSong->artists->next != NULL) {
+        printf(" - All three : ");
         ArtistList* a = globalSong->artists;
+        int first = 1;
         while (a != NULL) {
+            if (!first) printf(", ");
             printf("%s", a->name);
-            if (a->next != NULL) printf(", ");
+            first = 0;
             a = a->next;
         }
     }
